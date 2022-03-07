@@ -1,17 +1,5 @@
 # Wave Portal Smart Contract
 
-## Run Smart Contract
-
-```shell
-npx hardhat accounts
-```
-
-## Deploy to Rinkeby
-
-```shell
-npx hardhat run scripts/deploy.js --network rinkeby
-```
-
 ## Test your Smart Contract
 
 ```shell
@@ -38,3 +26,8 @@ Now deploy to localhost
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
+## Deploy to Rinkeby
+
+```shell
+npx hardhat run scripts/deploy.js --network rinkeby
+```
