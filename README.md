@@ -4,13 +4,13 @@ A web3 Wave Portal using Flutter as Frontend and Solidity as Backend
 
 ## 🏗 Structure
 
-The smart_contract folder consists oof everything it needs to run and deploy a smart contract. The
+The smart_contract folder consists of everything it needs to run and deploy a smart contract. The
 smart contract used in this example is also in there right under `smart_contract/contracts`. More info
 on that in [Smart Contract README](https://github.com/MuTe33/Flutter-Web3-Wave-Portal/blob/main/smart_contract/README.md).
 
 ## 💙 Purpose
 
-This project demonstrate core principles of a decentralized app (dApp) that is reading, writing 
+This project demonstrates core principles of a decentralized app (dApp) that is reading, writing 
 from/to the blockchain and listen for event. 
 
 ## 🐵 What to expect
