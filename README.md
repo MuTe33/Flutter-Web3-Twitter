@@ -36,7 +36,9 @@ are providing nodes which we are using to access the blockchain
 
 Open a PR and contribute. More then welllllllcommmeeeeee!
 
+## 🐓 How the app looks like
 
+![screen](screenshots/twitter_feed_screen.png)
 
  
 
