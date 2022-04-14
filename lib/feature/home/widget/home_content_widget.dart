@@ -27,7 +27,7 @@ class HomeContentWidget extends StatelessWidget {
               else ...[
                 const SizedBox(height: 32),
                 Text(
-                  'Total Waves: ${model.totalWaves}',
+                  'Total Tweets: ${model.totalTweets}',
                   style: const TextStyle(fontSize: 22),
                   textAlign: TextAlign.center,
                 ),
@@ -50,13 +50,13 @@ class HomeContentWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                  'From: ${model.allWaves[index].formattedAddress}'),
+                                  'From: ${model.allTweets[index].formattedAddress}'),
                               const SizedBox(height: 8),
                               Text(
-                                'Timestamp: ${model.allWaves[index].formattedTimeStamp}',
+                                'Timestamp: ${model.allTweets[index].formattedTimeStamp}',
                               ),
                               const SizedBox(height: 8),
-                              Text('Message: ${model.allWaves[index].message}'),
+                              Text('Tweet: ${model.allTweets[index].message}'),
                             ],
                           ),
                           const Spacer(),
@@ -68,7 +68,7 @@ class HomeContentWidget extends StatelessWidget {
                             onPressed: () async {
                               final etherscanLink = join(
                                 'https://rinkeby.etherscan.io/address',
-                                model.allWaves[index].address.hex,
+                                model.allTweets[index].address.hex,
                               );
 
                               if (await canLaunch(etherscanLink)) {
@@ -85,7 +85,7 @@ class HomeContentWidget extends StatelessWidget {
                         color: Color(0xff03dac6),
                       );
                     },
-                    itemCount: model.allWaves.length,
+                    itemCount: model.allTweets.length,
                   ),
                 ),
               ),
@@ -108,8 +108,8 @@ class HomeContentWidget extends StatelessWidget {
             ),
           );
         },
-        tooltip: 'wave',
-        child: const Text('👋'),
+        tooltip: 'tweet',
+        child: const Text('🐓'),
       ),
     );
   }

@@ -70,7 +70,7 @@ class BottomSheetWidget extends StatelessWidget {
                       if (_formKey.currentState?.validate() == false) {
                         model.setError();
                       } else {
-                        await model.sendWave(message: _controller.text);
+                        await model.sendTweet(message: _controller.text);
 
                         Navigator.of(context).pop();
                       }

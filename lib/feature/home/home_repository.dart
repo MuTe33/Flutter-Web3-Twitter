@@ -5,12 +5,8 @@ import 'package:web3_flutter/model/tweet.dart';
 import 'package:web3dart/web3dart.dart';
 
 class HomeRepository {
-  HomeRepository(
-    this._client,
-    this._contract,
-  );
+  HomeRepository(this._contract);
 
-  final Web3Client _client;
   final TwitterFeed _contract;
 
   Future<int> getTotalTweets() async {
@@ -22,7 +18,9 @@ class HomeRepository {
   Future<List<Tweet>> getAllTweets() async {
     final result = await _contract.getAllTweets();
 
-    return result as List<Tweet>;
+    print('result<<<<<<<<<: $result');
+
+    return [];
   }
 
   Future<String> tweet(String message) async {

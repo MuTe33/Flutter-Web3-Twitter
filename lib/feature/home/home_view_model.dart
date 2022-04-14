@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:web3_flutter/base/view_model.dart';
 import 'package:web3_flutter/feature/home/home_repository.dart';
 import 'package:web3_flutter/model/tweet.dart';
@@ -10,40 +9,31 @@ class HomeViewModel extends ViewModel {
 
   final HomeRepository _homeRepository;
 
-  late final StreamSubscription? _mobileStreamSubscription;
+  late final StreamSubscription _tweetStreamSubscription;
 
-  int _totalWaves = 0;
-  List<Tweet> _allWaves = [];
+  int _totalTweets = 0;
+  List<Tweet> _allTweets = [];
   String _hash = 'No tx hash available';
 
-  int get totalWaves => _totalWaves;
+  int get totalTweets => _totalTweets;
   String get hash => _hash;
 
-  List<Tweet> get allWaves {
-    return _allWaves
+  List<Tweet> get allTweets {
+    return _allTweets
       ..sort(
         (a, b) => b.timestamp.compareTo(a.timestamp),
       );
   }
 
   Future<void> onInit() async {
-    if (!kIsWeb) {
-      // not supported for web
-      _mobileStreamSubscription =
-          _homeRepository.tweetStream().listen((_) async => await loadWaves());
-    }
+    _tweetStreamSubscription = _homeRepository.tweetStream().listen((_) async {
+      await _loadTweets();
+    });
 
-    await loadWaves();
+    await _loadTweets();
   }
 
-  Future<void> loadWaves() async {
-    await Future.wait([
-      _getTotalWaves(),
-      _getAllWaves(),
-    ]);
-  }
-
-  Future<void> sendWave({required String message}) async {
+  Future<void> sendTweet({required String message}) async {
     setLoading();
 
     try {
@@ -56,25 +46,32 @@ class HomeViewModel extends ViewModel {
     setIdle();
   }
 
-  Future<void> _getTotalWaves() async {
+  Future<void> _loadTweets() async {
+    await Future.wait([
+      _getTotalTweets(),
+      _getAllTweets(),
+    ]);
+  }
+
+  Future<void> _getTotalTweets() async {
     setLoading();
 
-    _totalWaves = await _homeRepository.getTotalTweets();
+    _totalTweets = await _homeRepository.getTotalTweets();
 
     setIdle();
   }
 
-  Future<void> _getAllWaves() async {
+  Future<void> _getAllTweets() async {
     setLoading();
 
-    _allWaves = await _homeRepository.getAllTweets();
+    _allTweets = await _homeRepository.getAllTweets();
 
     setIdle();
   }
 
   @override
   void dispose() {
-    _mobileStreamSubscription?.cancel();
+    _tweetStreamSubscription.cancel();
     super.dispose();
   }
 }

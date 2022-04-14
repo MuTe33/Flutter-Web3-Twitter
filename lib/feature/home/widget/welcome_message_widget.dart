@@ -35,7 +35,7 @@ class WelcomeMessageWidget extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const Text(
-          '(By writing me a message there is a 10% chance to win 3 cents in Ether. '
+          '(By writing me a tweet there is a 10% chance to win 3 cents in Ether. '
           'It will be automatically transferred to your wallet if you win 🥳 '
           'Messages take about 15-20 seconds until displayed since this is the '
           'time the transaction is being mined and eventually included into a block. '
