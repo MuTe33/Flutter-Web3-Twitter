@@ -1,4 +1,4 @@
-import 'package:web3_wave_portal/util/date_time_util.dart';
+import 'package:web3_flutter/util/date_time_util.dart';
 import 'package:web3dart/web3dart.dart';
 
 class Wave {

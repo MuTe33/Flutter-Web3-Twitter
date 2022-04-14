@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_web3/flutter_web3.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:web3_wave_portal/base/view_model.dart';
-import 'package:web3_wave_portal/feature/home/home_repository.dart';
-import 'package:web3_wave_portal/model/wave.dart';
+import 'package:web3_flutter/base/view_model.dart';
+import 'package:web3_flutter/feature/home/home_repository.dart';
+import 'package:web3_flutter/model/wave.dart';
 
 const rinkebyChainId = 4;
 

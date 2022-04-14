@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:web3_wave_portal/base/view_model.dart';
-import 'package:web3_wave_portal/locator.dart';
+import 'package:web3_flutter/base/view_model.dart';
+import 'package:web3_flutter/locator.dart';
 
 class ViewModelProviderWidget<T extends ViewModel> extends StatefulWidget {
   const ViewModelProviderWidget({

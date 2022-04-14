@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:web3_wave_portal/feature/app/wave_portal_app.dart';
-import 'package:web3_wave_portal/locator.dart';
+import 'package:web3_flutter/feature/app/wave_portal_app.dart';
+import 'package:web3_flutter/locator.dart';
 
 Future<void> main() async {
   await runZonedGuarded<Future<void>>(

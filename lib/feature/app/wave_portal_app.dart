@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web3_wave_portal/feature/home/home_page_widget.dart';
+import 'package:web3_flutter/feature/home/home_page_widget.dart';
 
 class WavePortalApp extends StatelessWidget {
   const WavePortalApp({Key? key}) : super(key: key);

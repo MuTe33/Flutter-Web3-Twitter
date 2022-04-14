@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
-import 'package:web3_wave_portal/contract/wave_portal_abi.dart';
-import 'package:web3_wave_portal/feature/home/home_repository.dart';
-import 'package:web3_wave_portal/feature/home/home_view_model.dart';
-import 'package:web3_wave_portal/model/contract_config.dart';
+import 'package:web3_flutter/contract/wave_portal_abi.dart';
+import 'package:web3_flutter/feature/home/home_repository.dart';
+import 'package:web3_flutter/feature/home/home_view_model.dart';
+import 'package:web3_flutter/model/contract_config.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:web_socket_channel/io.dart';
 

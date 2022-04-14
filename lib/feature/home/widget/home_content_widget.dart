@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:web3_wave_portal/feature/home/home_view_model.dart';
-import 'package:web3_wave_portal/feature/home/widget/bottom_sheet_widget.dart';
-import 'package:web3_wave_portal/feature/home/widget/welcome_message_widget.dart';
+import 'package:web3_flutter/feature/home/home_view_model.dart';
+import 'package:web3_flutter/feature/home/widget/bottom_sheet_widget.dart';
+import 'package:web3_flutter/feature/home/widget/welcome_message_widget.dart';
 
 class HomeContentWidget extends StatelessWidget {
   const HomeContentWidget({Key? key}) : super(key: key);

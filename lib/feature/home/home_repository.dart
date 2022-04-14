@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_web3/flutter_web3.dart' as web3;
 import 'package:rxdart/rxdart.dart';
-import 'package:web3_wave_portal/contract/wave_portal_abi.dart';
-import 'package:web3_wave_portal/model/contract_config.dart';
-import 'package:web3_wave_portal/model/wave.dart';
+import 'package:web3_flutter/contract/wave_portal_abi.dart';
+import 'package:web3_flutter/model/contract_config.dart';
+import 'package:web3_flutter/model/wave.dart';
 import 'package:web3dart/web3dart.dart';
 
 class HomeRepository {
