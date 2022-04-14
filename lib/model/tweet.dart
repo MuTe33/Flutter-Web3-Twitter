@@ -1,8 +1,8 @@
 import 'package:web3_flutter/util/date_time_util.dart';
 import 'package:web3dart/web3dart.dart';
 
-class Wave {
-  Wave({
+class Tweet {
+  Tweet({
     required this.address,
     required this.message,
     required this.timestamp,
@@ -26,6 +26,6 @@ class Wave {
 
   @override
   String toString() {
-    return 'Wave{address: $address, message: $message, timestamp: $timestamp}';
+    return 'Tweet{address: $address, message: $message, timestamp: $timestamp}';
   }
 }

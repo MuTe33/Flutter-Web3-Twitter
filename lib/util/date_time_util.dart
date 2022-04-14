@@ -1,6 +1,6 @@
 /// Credits to tpscrpt
 /// https://github.com/tpscrpt/time_formatter
-/// Due to inactivity, I ported htis to null safety and modified suffixes to my ned :)
+/// Due to inactivity, I ported this to null safety and modified suffixes to my ned :)
 ///
 /// Formats a given UNIX millisecond timestamp into a human-readable string.
 ///

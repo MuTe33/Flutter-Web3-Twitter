@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:web3_flutter/feature/app/wave_portal_app.dart';
+import 'package:web3_flutter/feature/app/twitter_feed_app.dart';
 import 'package:web3_flutter/locator.dart';
 
 Future<void> main() async {
@@ -15,7 +15,7 @@ Future<void> main() async {
 
       initSyncDependencies();
 
-      runApp(const WavePortalApp());
+      runApp(const TwitterFeedApp());
     },
     (e, s) => FlutterError.reportError(
       FlutterErrorDetails(exception: e, stack: s),

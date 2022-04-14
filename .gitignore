@@ -9,20 +9,18 @@
 .history
 .svn/
 
+# iOS stuff
+ios/Runner/container/*
+ios/Flutter/.last_build_id
+
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+**/.idea/*
 
 # Flutter/Dart/Pub related
 **/doc/api/
-**/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -33,16 +31,13 @@
 
 # Web related
 lib/generated_plugin_registrant.dart
-.firebase
 
-# Symbolication related
-app.*.symbols
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
-# Obfuscation related
-app.*.map.json
+# NPM stuff
+**/node_modules/
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Exclude run configurations
+!**/.idea/runConfigurations/
 

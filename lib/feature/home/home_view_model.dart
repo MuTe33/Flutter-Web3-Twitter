@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:web3_flutter/base/view_model.dart';
 import 'package:web3_flutter/feature/home/home_repository.dart';
-import 'package:web3_flutter/model/wave.dart';
+import 'package:web3_flutter/model/tweet.dart';
 
 class HomeViewModel extends ViewModel {
   HomeViewModel(this._homeRepository);
@@ -13,13 +13,13 @@ class HomeViewModel extends ViewModel {
   late final StreamSubscription? _mobileStreamSubscription;
 
   int _totalWaves = 0;
-  List<Wave> _allWaves = [];
+  List<Tweet> _allWaves = [];
   String _hash = 'No tx hash available';
 
   int get totalWaves => _totalWaves;
   String get hash => _hash;
 
-  List<Wave> get allWaves {
+  List<Tweet> get allWaves {
     return _allWaves
       ..sort(
         (a, b) => b.timestamp.compareTo(a.timestamp),
@@ -29,9 +29,8 @@ class HomeViewModel extends ViewModel {
   Future<void> onInit() async {
     if (!kIsWeb) {
       // not supported for web
-      _mobileStreamSubscription = _homeRepository
-          .mobileWaveStream()
-          .listen((_) async => await loadWaves());
+      _mobileStreamSubscription =
+          _homeRepository.tweetStream().listen((_) async => await loadWaves());
     }
 
     await loadWaves();
@@ -48,7 +47,7 @@ class HomeViewModel extends ViewModel {
     setLoading();
 
     try {
-      _hash = await _homeRepository.sendWave(message);
+      _hash = await _homeRepository.tweet(message);
     } catch (e) {
       setError();
       return;
@@ -60,7 +59,7 @@ class HomeViewModel extends ViewModel {
   Future<void> _getTotalWaves() async {
     setLoading();
 
-    _totalWaves = await _homeRepository.getTotalWaves();
+    _totalWaves = await _homeRepository.getTotalTweets();
 
     setIdle();
   }
@@ -68,7 +67,7 @@ class HomeViewModel extends ViewModel {
   Future<void> _getAllWaves() async {
     setLoading();
 
-    _allWaves = await _homeRepository.getAllWaves();
+    _allWaves = await _homeRepository.getAllTweets();
 
     setIdle();
   }

@@ -1,11 +1,11 @@
 class ContractConfig {
   ContractConfig(
-    this.wavePortalContractAddress,
-    this.wavePortalAbi,
+    this.contractAddress,
+    this.abi,
     this.contractName,
   );
 
-  final String wavePortalContractAddress;
-  final String wavePortalAbi;
+  final String contractAddress;
+  final String abi;
   final String contractName;
 }

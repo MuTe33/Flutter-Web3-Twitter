@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
-import 'package:web3_flutter/contract/wave_portal_abi.dart';
+import 'package:web3_flutter/contract/TwitterFeed.g.dart';
 import 'package:web3_flutter/feature/home/home_repository.dart';
 import 'package:web3_flutter/feature/home/home_view_model.dart';
 import 'package:web3_flutter/model/contract_config.dart';
@@ -17,16 +17,16 @@ Future<void> resetDependencies() async {
 void initSyncDependencies() {
   _initContractConfig();
   _initNetworking();
-  _initDeployedContract();
+  _initTwitterFeedSmartContract();
   _l.registerSingleton(HomeRepository(_l.get(), _l.get()));
   _l.registerSingleton(HomeViewModel(_l.get()));
 }
 
 void _initContractConfig() {
   final contractConfig = ContractConfig(
-    '0x02b6E4bb701d702517f51546a4902f86A4BD8fAc',
-    wavePortalAbi,
-    'WavePortal',
+    '0xB8262097D5a743Fa297DC31A50E83F951A7F430E',
+    "",
+    'TwitterFeed',
   );
 
   _l.registerSingleton(contractConfig);
@@ -48,16 +48,6 @@ void _initNetworking() {
   _l.registerSingleton(client);
 }
 
-void _initDeployedContract() {
-  final contractConfig = _l.get<ContractConfig>();
-
-  final deployedContract = DeployedContract(
-    ContractAbi.fromJson(
-      contractConfig.wavePortalAbi,
-      contractConfig.contractName,
-    ),
-    EthereumAddress.fromHex(contractConfig.wavePortalContractAddress),
-  );
-
-  _l.registerSingleton(deployedContract);
+void _initTwitterFeedSmartContract() {
+  _l.registerSingleton(TwitterFeed);
 }
