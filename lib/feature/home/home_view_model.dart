@@ -1,12 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_web3/flutter_web3.dart';
 import 'package:web3_flutter/base/view_model.dart';
 import 'package:web3_flutter/feature/home/home_repository.dart';
 import 'package:web3_flutter/model/wave.dart';
-
-const rinkebyChainId = 4;
 
 class HomeViewModel extends ViewModel {
   HomeViewModel(this._homeRepository);
@@ -14,7 +11,6 @@ class HomeViewModel extends ViewModel {
   final HomeRepository _homeRepository;
 
   late final StreamSubscription? _mobileStreamSubscription;
-  late final Web3Provider? _web3Provider;
 
   int _totalWaves = 0;
   List<Wave> _allWaves = [];
@@ -52,10 +48,7 @@ class HomeViewModel extends ViewModel {
     setLoading();
 
     try {
-      _hash = await _homeRepository.sendWave(
-        message,
-        _web3Provider,
-      );
+      _hash = await _homeRepository.sendWave(message);
     } catch (e) {
       setError();
       return;

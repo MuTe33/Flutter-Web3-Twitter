@@ -1,5 +1,3 @@
-import 'package:flutter_web3/flutter_web3.dart';
-
 const wavePortalAbi = '''
 [
     {
@@ -109,5 +107,3 @@ const wavePortalAbi = '''
     }
 ]
 ''';
-
-final abiInterFace = Interface(wavePortalAbi);

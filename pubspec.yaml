@@ -15,8 +15,6 @@ dependencies:
   intl: ^0.17.0
   provider: ^6.0.2
   rxdart: ^0.27.3
-  # this is for web only
-  flutter_web3: ^2.1.9
   url_launcher: ^6.0.20
   web3dart: ^2.3.5
   web_socket_channel: ^2.1.0

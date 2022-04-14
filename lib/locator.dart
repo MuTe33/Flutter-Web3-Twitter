@@ -18,7 +18,7 @@ void initSyncDependencies() {
   _initContractConfig();
   _initNetworking();
   _initDeployedContract();
-  _l.registerSingleton(HomeRepository(_l.get(), _l.get(), _l.get()));
+  _l.registerSingleton(HomeRepository(_l.get(), _l.get()));
   _l.registerSingleton(HomeViewModel(_l.get()));
 }
 

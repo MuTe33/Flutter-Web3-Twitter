@@ -1,9 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_web3/flutter_web3.dart' as web3;
-import 'package:web3_flutter/contract/wave_portal_abi.dart';
-import 'package:web3_flutter/model/contract_config.dart';
 import 'package:web3_flutter/model/wave.dart';
 import 'package:web3dart/web3dart.dart';
 
@@ -11,12 +7,10 @@ class HomeRepository {
   HomeRepository(
     this._client,
     this._deployedContract,
-    this._contractConfig,
   );
 
   final Web3Client _client;
   final DeployedContract _deployedContract;
-  final ContractConfig _contractConfig;
 
   Future<int> getTotalWaves() async {
     final result = await _callContract('getTotalWaves', []);
@@ -42,28 +36,8 @@ class HomeRepository {
         .toList();
   }
 
-  Future<String> sendWave(
-    String message,
-    web3.Web3Provider? web3provider,
-  ) async {
-    // since web uses wallet connect, we need to handle this differently then
-    // in mobile for now
-    if (kIsWeb) {
-      final waveContract = web3.Contract(
-        _contractConfig.wavePortalContractAddress,
-        abiInterFace,
-        web3provider!.getSigner(),
-      );
-
-      final tx = await waveContract.send('wave', [message]);
-
-      return tx.hash;
-    } else {
-      return _sendTransaction(
-        'wave',
-        [message],
-      );
-    }
+  Future<String> sendWave(String message) async {
+    return _sendTransaction('wave', [message]);
   }
 
   Stream<FilterEvent> mobileWaveStream() {
