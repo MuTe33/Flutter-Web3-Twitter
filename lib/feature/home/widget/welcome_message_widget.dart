@@ -16,7 +16,7 @@ class WelcomeMessageWidget extends StatelessWidget {
     return Column(
       children: [
         Text(
-          '👋 Wave Portal',
+          '👋 Twitter Feed',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 30,
@@ -26,7 +26,7 @@ class WelcomeMessageWidget extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const Text(
-          'Send me a wave through the metaverse ✨',
+          'Send me a tweet through the metaverse ✨',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 16,

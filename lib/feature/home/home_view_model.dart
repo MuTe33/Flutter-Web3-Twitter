@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_web3/flutter_web3.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:web3_flutter/base/view_model.dart';
 import 'package:web3_flutter/feature/home/home_repository.dart';
 import 'package:web3_flutter/model/wave.dart';
@@ -16,19 +15,11 @@ class HomeViewModel extends ViewModel {
 
   late final StreamSubscription? _mobileStreamSubscription;
   late final Web3Provider? _web3Provider;
-  late final BehaviorSubject? _webWaveStream;
 
-  String _currentAddress = '';
-  int _currentChain = -1;
   int _totalWaves = 0;
   List<Wave> _allWaves = [];
   String _hash = 'No tx hash available';
 
-  bool get _isInOperatingChain => _currentChain == rinkebyChainId;
-  bool get _isConnected => isEnabled && _currentAddress.isNotEmpty;
-
-  bool get isWalletConnectReady => _isConnected && _isInOperatingChain;
-  bool get isEnabled => ethereum != null;
   int get totalWaves => _totalWaves;
   String get hash => _hash;
 
@@ -73,23 +64,6 @@ class HomeViewModel extends ViewModel {
     setIdle();
   }
 
-  Future<void> onConnectClicked() async {
-    if (isEnabled) {
-      final accounts = await ethereum!.requestAccount();
-
-      if (accounts.isNotEmpty) {
-        _currentAddress = accounts.first;
-        _currentChain = await ethereum!.getChainId();
-
-        _web3Provider = Web3Provider.fromEthereum(ethereum!);
-
-        _initWebStream();
-      }
-
-      update();
-    }
-  }
-
   Future<void> _getTotalWaves() async {
     setLoading();
 
@@ -106,18 +80,9 @@ class HomeViewModel extends ViewModel {
     setIdle();
   }
 
-  void _initWebStream() {
-    _homeRepository.initWebWaveStream(_web3Provider!);
-
-    _webWaveStream = _homeRepository.webWaveStream;
-
-    _webWaveStream!.listen((_) => loadWaves());
-  }
-
   @override
   void dispose() {
     _mobileStreamSubscription?.cancel();
-    _webWaveStream?.close();
     super.dispose();
   }
 }

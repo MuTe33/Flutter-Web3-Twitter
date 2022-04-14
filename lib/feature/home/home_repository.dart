@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_web3/flutter_web3.dart' as web3;
-import 'package:rxdart/rxdart.dart';
 import 'package:web3_flutter/contract/wave_portal_abi.dart';
 import 'package:web3_flutter/model/contract_config.dart';
 import 'package:web3_flutter/model/wave.dart';
@@ -18,10 +17,6 @@ class HomeRepository {
   final Web3Client _client;
   final DeployedContract _deployedContract;
   final ContractConfig _contractConfig;
-
-  final _webWaveStream = BehaviorSubject<web3.Event?>.seeded(null);
-
-  BehaviorSubject<web3.Event?> get webWaveStream => _webWaveStream;
 
   Future<int> getTotalWaves() async {
     final result = await _callContract('getTotalWaves', []);
@@ -77,23 +72,6 @@ class HomeRepository {
         contract: _deployedContract,
         event: _contractEvent,
       ),
-    );
-  }
-
-  void initWebWaveStream(web3.Web3Provider web3provider) {
-    final waveContract = web3.Contract(
-      _deployedContract.address.hex,
-      abiInterFace,
-      web3provider,
-    );
-
-    waveContract.on(
-      'NewWave',
-      (_, __, ___, event) {
-        final wave = web3.Event.fromJS(event);
-
-        _webWaveStream.add(wave);
-      },
     );
   }
 
