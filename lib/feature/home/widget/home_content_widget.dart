@@ -38,43 +38,49 @@ class HomeContentWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     border: Border.all(color: const Color(0xff03dac6)),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(10),
-                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                   ),
                   child: ListView.separated(
-                    itemBuilder: (context, index) {
+                    itemBuilder: (_, index) {
                       return Row(
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                  'From: ${model.allTweets[index].formattedAddress}'),
-                              const SizedBox(height: 8),
-                              Text(
-                                'Timestamp: ${model.allTweets[index].formattedTimeStamp}',
-                              ),
-                              const SizedBox(height: 8),
-                              Text('Tweet: ${model.allTweets[index].message}'),
-                            ],
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            icon: const Icon(
-                              Icons.call_made_outlined,
-                              size: 16,
+                          SizedBox(
+                            width: 300,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'From: ${model.allTweets[index].formattedAddress}',
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Timestamp: ${model.allTweets[index].formattedTimeStamp}',
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Tweet: ${model.allTweets[index].message}',
+                                  maxLines: 5,
+                                ),
+                              ],
                             ),
-                            onPressed: () async {
-                              final etherscanLink = join(
-                                'https://rinkeby.etherscan.io/address',
-                                model.allTweets[index].address.hex,
-                              );
+                          ),
+                          Expanded(
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.call_made_outlined,
+                                size: 16,
+                              ),
+                              onPressed: () async {
+                                final etherscanLink = join(
+                                  'https://rinkeby.etherscan.io/address',
+                                  model.allTweets[index].address.hex,
+                                );
 
-                              if (await canLaunch(etherscanLink)) {
-                                await launch(etherscanLink);
-                              }
-                            },
+                                if (await canLaunch(etherscanLink)) {
+                                  await launch(etherscanLink);
+                                }
+                              },
+                            ),
                           ),
                         ],
                       );
@@ -102,9 +108,9 @@ class HomeContentWidget extends StatelessWidget {
             useRootNavigator: true,
             enableDrag: true,
             clipBehavior: Clip.hardEdge,
-            builder: (context) => ChangeNotifierProvider.value(
+            builder: (_) => ChangeNotifierProvider.value(
               value: model,
-              child: BottomSheetWidget(),
+              child: const BottomSheetWidget(),
             ),
           );
         },

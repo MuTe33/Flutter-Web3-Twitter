@@ -15,15 +15,17 @@ Future<void> resetDependencies() async {
 
 void initSyncDependencies() {
   _initNetworking();
-  _initTwitterFeedSmartContract();
+  _initContract();
   _l.registerSingleton(HomeRepository(_l.get()));
   _l.registerSingleton(HomeViewModel(_l.get()));
 }
 
 void _initNetworking() {
-  final contract = '0xB8262097D5a743Fa297DC31A50E83F951A7F430E';
+  // access to the Ethereum blockchain
   const rinkebyAlchemyUrl =
       'https://eth-rinkeby.alchemyapi.io/v2/<YOUR_API_KEY>';
+
+  // needed for streams/events
   const rinkebyAlchemyWss = 'wss://eth-rinkeby.alchemyapi.io/v2/<YOUR_API_KEY>';
 
   final client = Web3Client(
@@ -37,6 +39,18 @@ void _initNetworking() {
   _l.registerSingleton(client);
 }
 
-void _initTwitterFeedSmartContract() {
-  _l.registerSingleton(TwitterFeed);
+void _initContract() {
+  final client = _l.get<Web3Client>();
+
+  final contract = TwitterFeed(
+    // smart contract address
+    address: EthereumAddress.fromHex(
+      '0xB8262097D5a743Fa297DC31A50E83F951A7F430E',
+    ),
+    client: client,
+    // rinkeby test network chainId
+    chainId: 4,
+  );
+
+  _l.registerSingleton(contract);
 }

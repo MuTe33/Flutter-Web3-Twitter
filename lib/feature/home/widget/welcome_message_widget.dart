@@ -11,12 +11,12 @@ class WelcomeMessageWidget extends StatelessWidget {
         Color(0xFFCE7312),
         Color(0xFFF9CE23),
       ],
-    ).createShader(const Rect.fromLTWH(0, 0, 1200, 0));
+    ).createShader(const Rect.fromLTWH(0, 0, 300, 0));
 
     return Column(
       children: [
         Text(
-          '👋 Twitter Feed',
+          '🐓 Twitter Feed',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 30,

@@ -18,9 +18,17 @@ class HomeRepository {
   Future<List<Tweet>> getAllTweets() async {
     final result = await _contract.getAllTweets();
 
-    print('result<<<<<<<<<: $result');
+    final parsedTweets = result
+        .map(
+          (tweet) => Tweet(
+            address: tweet[0],
+            message: tweet[1],
+            timestamp: tweet[2],
+          ),
+        )
+        .toList();
 
-    return [];
+    return parsedTweets;
   }
 
   Future<String> tweet(String message) async {
