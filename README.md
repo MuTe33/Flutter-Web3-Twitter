@@ -1,12 +1,12 @@
-# Flutter & Web3 Twitter
+# Flutter & Web3 Twitter Feed
 
-A web3 Twitter using Flutter as Frontend and Solidity as Backend 
+A web3 Twitter Feed using Flutter as Frontend and Solidity as Backend 
 
 ## 🏗 Structure
 
 The smart_contract folder consists of everything it needs to run and deploy a smart contract. The
 smart contract used in this example is also in there right under `smart_contract/contracts`. More info
-on that in [Smart Contract README](https://github.com/MuTe33/Flutter-Web3-Wave-Portal/blob/main/smart_contract/README.md).
+on that in [Smart Contract README](https://github.com/MuTe33/Flutter-Web3-Twitter/blob/main/smart_contract/README.md).
 
 ## 💙 Purpose
 
@@ -19,15 +19,8 @@ This project is a couple of days hack, use this as a building block or to get th
 missing here. 
 
 - not all error cases covered
-- for web I use a different web3 package then for mobile. They are not compatible
-- wallet connect feature not exhaustive 
-- mobile app is lacking wallet connect feature
-- desktop is missing 
+- private key must be adjusted in code, there is no screen to save it nor wallet connect is added 
 - UI could be way better 🥲
-  
-So far only web works fully. Refer to hosted side here: [Wave Portal](https://wave-portal-5.firebaseapp.com)
-
-My goal is to add wallet connect to mobile and expand to desktop as well.
 
 ## Some Notes
 
