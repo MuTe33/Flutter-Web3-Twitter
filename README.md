@@ -39,7 +39,7 @@ Open a PR and contribute. More then welllllllcommmeeeeee!
 ## 🐓 How the app looks like
 
 <p align="center">
-  <img src="screenshots/twitter_feed_screen.png" width="350" height="350">
+  <img src="screenshots/twitter_feed_screen.png" width="600" height="600">
 </p>
  
 
