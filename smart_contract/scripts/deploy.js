@@ -5,14 +5,14 @@ const main = async () => {
     console.log("Deploying contracts with account: ", deployer.address);
     console.log("Account balance: ", accountBalance.toString());
 
-    const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
-    const waveContract = await waveContractFactory.deploy({
+    const tweetContractFactory = await hre.ethers.getContractFactory("TwitterFeed");
+    const tweetContract = await tweetContractFactory.deploy({
         value: hre.ethers.utils.parseEther("0.01"),
     });
     
-    await waveContract.deployed();
+    await tweetContract.deployed();
 
-    console.log("WavePortal address: ", waveContract.address);
+    console.log("TweetBoard address: ", tweetContract.address);
 };
 
 const runMain = async () => {

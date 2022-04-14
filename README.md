@@ -1,6 +1,6 @@
-# Flutter & Web3 Wave Portal
+# Flutter & Web3 Twitter
 
-A web3 Wave Portal using Flutter as Frontend and Solidity as Backend 
+A web3 Twitter using Flutter as Frontend and Solidity as Backend 
 
 ## 🏗 Structure
 

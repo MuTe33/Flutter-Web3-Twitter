@@ -1,16 +1,16 @@
 const main = async () => {
-    const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
-    const waveContract = await waveContractFactory.deploy({
+    const tweetContractFactory = await hre.ethers.getContractFactory("TwitterFeed");
+    const tweetContract = await tweetContractFactory.deploy({
       value: hre.ethers.utils.parseEther("0.1"),
     });
-    await waveContract.deployed();
-    console.log("Contract address:", waveContract.address);
+    await tweetContract.deployed();
+    console.log("Contract address:", tweetContract.address);
   
     /*
      * Get Contract balance
      */
     let contractBalance = await hre.ethers.provider.getBalance(
-      waveContract.address
+      tweetContract.address
     );
     console.log(
       "Contract balance:",
@@ -20,23 +20,23 @@ const main = async () => {
     /*
      * Send Wave
      */
-    let waveTxn = await waveContract.wave("A message!");
-    await waveTxn.wait();
+    let tweetTxn = await tweetContract.tweet("A message!");
+    await tweetTxn.wait();
 
-    const waveTxn2 = await waveContract.wave("This is wave #2");
-    await waveTxn2.wait();
+    const tweetTxn2 = await tweetContract.tweet("This is tweet #2");
+    await tweetTxn2.wait();
   
     /*
      * Get Contract balance to see what happened!
      */
-    contractBalance = await hre.ethers.provider.getBalance(waveContract.address);
+    contractBalance = await hre.ethers.provider.getBalance(tweetContract.address);
     console.log(
       "Contract balance:",
       hre.ethers.utils.formatEther(contractBalance)
     );
   
-    let allWaves = await waveContract.getAllWaves();
-    console.log(allWaves);
+    let allTweets = await tweetContract.getAllTweets();
+    console.log(allTweets);
   };
   
   const runMain = async () => {

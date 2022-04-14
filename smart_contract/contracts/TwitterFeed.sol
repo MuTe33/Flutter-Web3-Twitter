@@ -3,22 +3,22 @@ pragma solidity ^0.8.4;
 
 import "hardhat/console.sol";
 
-contract WavePortal {
-    uint256 totalWaves;
+contract TwitterFeed {
+    uint256 totalTweets;
     uint256 private seed;
 
-    event NewWave(address indexed from, string message, uint256 timestamp);
+    event NewTweet(address indexed from, string message, uint256 timestamp);
 
     // custom datatype
-    struct Wave {
-        address waver;
+    struct Tweet {
+        address from;
         string message;
         uint256 timestamp;
     }
 
-    Wave[] waves;
+    Tweet[] tweets;
 
-    mapping(address => uint256) public lastWavedAt;
+    mapping(address => uint256) public lastTweetedAt;
 
     constructor() payable {
         console.log("Heyyy, I'am a smart contract - niceee");
@@ -26,20 +26,20 @@ contract WavePortal {
         seed = (block.timestamp + block.difficulty) % 100;
     }
 
-    function wave(string memory _message) public {
+    function tweet(string memory _message) public {
         
          require(
-            lastWavedAt[msg.sender] + 60 seconds < block.timestamp,
+             lastTweetedAt[msg.sender] + 60 seconds < block.timestamp,
             "Stop spamming, wait 60 seconds"
         );
 
-        lastWavedAt[msg.sender] = block.timestamp;
+        lastTweetedAt[msg.sender] = block.timestamp;
 
 
-        totalWaves += 1;
+        totalTweets += 1;
         console.log("%s waved w/ message %s", msg.sender, _message);
 
-        waves.push(Wave(msg.sender, _message, block.timestamp));
+        tweets.push(Tweet(msg.sender, _message, block.timestamp));
 
         seed = (block.difficulty + block.timestamp + seed) % 100;
 
@@ -56,15 +56,15 @@ contract WavePortal {
 
         }
 
-        emit NewWave(msg.sender, _message, block.timestamp);
+        emit NewTweet(msg.sender, _message, block.timestamp);
     }
 
-    function getAllWaves() public view returns (Wave[] memory) {
-        return waves;
+    function getAllTweets() public view returns (Tweet[] memory) {
+        return tweets;
     }
 
-    function getTotalWaves() public view returns (uint256) {
-        console.log("We have %d total waves!", totalWaves);
-        return totalWaves;
+    function getTotalTweets() public view returns (uint256) {
+        console.log("We have %d total waves!", totalTweets);
+        return totalTweets;
     }
 }

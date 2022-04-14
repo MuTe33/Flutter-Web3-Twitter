@@ -1,5 +1,5 @@
-name: web3_wave_portal
-description: A web3 wave portal using Flutter
+name: web3_flutter
+description: A web3 Twitter written in Flutter
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
